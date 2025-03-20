@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes explode {
+  to {
+    transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.emoji-explosion {
+  animation: explode 2s ease-out forwards;
+  pointer-events: none;
+}
+
+.animate-scale-in {
+  animation: scale-in 2s ease-out forwards;
+}

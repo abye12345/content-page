@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom animations */
 @keyframes explode {
   to {
     transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0);
@@ -19,11 +21,135 @@
   }
 }
 
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+  }
+}
+
+/* Animation classes */
 .emoji-explosion {
   animation: explode 2s ease-out forwards;
   pointer-events: none;
 }
 
+.emoji-confetti {
+  animation: bounce 2s infinite;
+  pointer-events: none;
+}
+
 .animate-scale-in {
-  animation: scale-in 2s ease-out forwards;
+  animation: scale-in 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-blue-600 hover:scale-105 shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 text-gray-800 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-gray-200;
+}
+
+/* Form input styles */
+.form-input {
+  @apply w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors;
+}
+
+.form-input-light {
+  @apply border-gray-300 bg-white text-gray-900 placeholder-gray-500;
+}
+
+.form-input-dark {
+  @apply border-gray-600 bg-gray-700 text-white placeholder-gray-400;
+}
+
+/* Card styles */
+.card {
+  @apply rounded-xl shadow-lg transition-all duration-200 hover:shadow-xl;
+}
+
+.card-light {
+  @apply bg-white;
+}
+
+.card-dark {
+  @apply bg-gray-800;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent;
 }
